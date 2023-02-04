@@ -1,44 +1,25 @@
 # clojeil
 
-FIXME: description
+Simple RabbitMQ-handled two-sided pub/sub communication demo 
 
 ## Installation
 
-Download from http://example.com/FIXME.
+Clone the repo from https://github.com/danorel/clojeil
 
 ## Usage
 
-FIXME: explanation
+1. Setup RabbitMQ locally using Docker.
 
-    $ java -jar clojeil-0.1.0-standalone.jar [args]
+```shell
+docker run -d -p 5672:5672 -p 15672:15672 --hostname rabbitmq --name rabbitmq -e RABBITMQ_DEFAULT_USER=guest -e RABBITMQ_DEFAULT_PASS=pass rabbitmq:3-management
+```
 
-## Options
+2. Run RabbitMQ publisher node:
+```shell
+lein publisher
+```
 
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
-
-## License
-
-Copyright © 2023 FIXME
-
-This program and the accompanying materials are made available under the
-terms of the Eclipse Public License 2.0 which is available at
-http://www.eclipse.org/legal/epl-2.0.
-
-This Source Code may also be made available under the following Secondary
-Licenses when the conditions for such availability set forth in the Eclipse
-Public License, v. 2.0 are satisfied: GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or (at your
-option) any later version, with the GNU Classpath Exception which is available
-at https://www.gnu.org/software/classpath/license.html.
+3. Run RabbitMQ consumer node:
+```shell
+lein consumer
+```
